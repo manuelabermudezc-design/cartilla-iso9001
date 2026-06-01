@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilla ISO 9001 - Sistema de Gestión de Calidad UNGRD</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --amarillo: #F5C518;
+    --azul-oscuro: #1A2E6B;
+    --azul-medio: #2B4DB0;
+    --azul-claro: #4A90D9;
+    --blanco: #FFFFFF;
+    --gris-claro: #F7F7F2;
+    --naranja: #F06B1E;
+    --verde: #2E8B57;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--gris-claro);
+    color: #222;
+    overflow-x: hidden;
+  }
+
+  /* ---- COVER ---- */
+  .cover {
+    background: linear-gradient(135deg, #1A2E6B 0%, #2B4DB0 60%, #4A90D9 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(245,197,24,0.18);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cover-notebook {
+    background: white;
+    border-radius: 18px;
+    padding: 56px 60px 48px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .cover-notebook::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 18px;
+    background: repeating-linear-gradient(90deg, #1A2E6B 0 14px, transparent 14px 24px);
+    border-radius: 18px 18px 0 0;
+  }
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    justify-content: center;
+  }
+  .logo-hand {
+    font-size: 44px;
+  }
+  .logo-text {
+    text-align: left;
+  }
+  .logo-text .ungrd {
+    font-family: 'Fredoka One', cursive;
+    font-size: 28px;
+    color: var(--azul-oscuro);
+    line-height: 1;
+  }
+  .logo-text .sub {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.3;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    padding: 8px 28px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .cover-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 42px;
+    color: var(--azul-oscuro);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .cover-iso {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--azul-medio);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .cover-stars {
+    font-size: 24px;
+    color: var(--amarillo);
+  }
+
+  /* ---- SECTION ---- */
+  .section {
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section + .section { padding-top: 0; }
+
+  /* ---- NOTEBOOK CARD ---- */
+  .notebook-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    position: relative;
+    overflow: hidden;
+  }
+  .notebook-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 14px;
+    background: repeating-linear-gradient(90deg, var(--azul-oscuro) 0 12px, transparent 12px 20px);
+    border-radius: 16px 16px 0 0;
+  }
+  .notebook-card.amarillo::before { background: repeating-linear-gradient(90deg, var(--amarillo) 0 12px, transparent 12px 20px); }
+  .notebook-card.verde::before   { background: repeating-linear-gradient(90deg, var(--verde) 0 12px, transparent 12px 20px); }
+  .notebook-card.naranja::before { background: repeating-linear-gradient(90deg, var(--naranja) 0 12px, transparent 12px 20px); }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 32px;
+    color: var(--azul-oscuro);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title .emoji { font-size: 34px; }
+
+  .highlight-box {
+    background: var(--amarillo);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .highlight-box.azul {
+    background: var(--azul-oscuro);
+    color: white;
+  }
+  .highlight-box.verde {
+    background: #E8F5E9;
+    color: #1B5E20;
+    border-left: 5px solid var(--verde);
+  }
+  .highlight-box.naranja {
+    background: #FFF3E0;
+    color: #BF360C;
+    border-left: 5px solid var(--naranja);
+  }
+
+  /* ---- OBJECTIVE BOX ---- */
+  .obj-box {
+    background: var(--azul-oscuro);
+    color: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .obj-box p { font-size: 17px; line-height: 1.6; }
+
+  /* ---- COLORED DIVIDER ---- */
+  .divider-strip {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, var(--amarillo) 0%, var(--azul-medio) 50%, var(--verde) 100%);
+    margin: 48px 0;
+    border-radius: 4px;
+  }
+
+  /* ---- GRID CARDS ---- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .mini-card {
+    background: var(--gris-claro);
+    border-radius: 12px;
+    padding: 20px 18px;
+    border-left: 5px solid var(--azul-medio);
+  }
+  .mini-card.am { border-left-color: var(--amarillo); }
+  .mini-card.ve { border-left-color: var(--verde); }
+  .mini-card.na { border-left-color: var(--naranja); }
+  .mini-card h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--azul-oscuro);
+    margin-bottom: 8px;
+  }
+  .mini-card p { font-size: 13.5px; line-height: 1.5; color: #444; }
+
+  /* ---- TABLE ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 28px;
+    font-size: 14px;
+  }
+  th {
+    background: var(--azul-oscuro);
+    color: white;
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child  { border-radius: 0 8px 0 0; }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #EEE;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:nth-child(even) td { background: #F7F8FC; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ---- USERS LIST ---- */
+  .users-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .user-chip {
+    background: var(--azul-oscuro);
+    color: white;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+  }
+  .user-chip.am { background: var(--amarillo); color: var(--azul-oscuro); }
+
+  /* ---- PLAN ACTIVITY ---- */
+  .activity-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid #EEE;
+  }
+  .activity-row:last-child { border-bottom: none; }
+  .act-num {
+    min-width: 36px; height: 36px;
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .act-content h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; color: var(--azul-oscuro); margin-bottom: 4px; }
+  .act-content p  { font-size: 13.5px; color: #555; line-height: 1.5; }
+  .act-badge {
+    display: inline-block;
+    background: #E8F5E9;
+    color: #1B5E20;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  /* ---- INDICATOR BOX ---- */
+  .indicator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1.5px solid #DDD;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 22px 0;
+  }
+  .ind-row {
+    display: contents;
+  }
+  .ind-label {
+    background: #F0F4FF;
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+  }
+  .ind-value {
+    background: white;
+    font-size: 13.5px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #DDD;
+    color: #333;
+  }
+  .ind-label:last-of-type, .ind-value:last-of-type { border-bottom: none; }
+
+  /* ---- RISK CARD ---- */
+  .risk-card {
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .risk-card.alto   { background: #FFEBEE; border-left: 5px solid #C62828; }
+  .risk-card.medio  { background: #FFF8E1; border-left: 5px solid #F9A825; }
+  .risk-card.bajo   { background: #E8F5E9; border-left: 5px solid #2E7D32; }
+  .risk-nivel {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+  .risk-card.alto  .risk-nivel { background: #C62828; color: white; }
+  .risk-card.medio .risk-nivel { background: #F9A825; color: #333; }
+  .risk-card.bajo  .risk-nivel { background: #2E7D32; color: white; }
+  .risk-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 5px; }
+  .risk-card p  { font-size: 13.5px; line-height: 1.5; color: #444; }
+  .risk-control { font-size: 12.5px; color: #666; margin-top: 6px; font-style: italic; }
+
+  /* ---- MEJORA CARDS ---- */
+  .mejora-card {
+    background: white;
+    border: 1.5px solid #E0E7FF;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .mejora-num {
+    min-width: 32px; height: 32px;
+    background: var(--azul-medio);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .mejora-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; color: var(--azul-oscuro); margin-bottom: 4px; }
+  .mejora-card p  { font-size: 13.5px; line-height: 1.5; color: #444; }
+
+  /* ---- CIERRE ---- */
+  .cierre-box {
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+    color: white;
+    border-radius: 16px;
+    padding: 40px 44px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .cierre-box h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--amarillo);
+  }
+  .cierre-box p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.92); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--azul-oscuro);
+    color: white;
+    text-align: center;
+    padding: 28px 40px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  footer strong { color: var(--amarillo); }
+
+  /* ---- PAGE BREAK HEADING ---- */
+  .page-head {
+    background: var(--azul-oscuro);
+    color: white;
+    padding: 32px 40px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .page-head .icon-big { font-size: 52px; }
+  .page-head h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .page-head p { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+  .bullet-list { list-style: none; padding: 0; margin: 14px 0; }
+  .bullet-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid #EEE;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #444;
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--azul-medio);
+    font-size: 14px;
+  }
+
+  .tag { display: inline-block; background: #E8F0FE; color: var(--azul-oscuro); font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin: 2px; }
+
+  @media (max-width: 600px) {
+    .cover-notebook { padding: 40px 24px 36px; }
+    .cover-title { font-size: 30px; }
+    .section { padding: 40px 20px; }
+    .notebook-card { padding: 28px 22px; }
+    .indicator-grid { grid-template-columns: 1fr; }
+    .ind-label { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<div class="cover">
+  <div class="cover-notebook">
+    <div class="logo-bar">
+      <div class="logo-hand">🖐️</div>
+      <div class="logo-text">
+        <div class="ungrd">UNGRD</div>
+        <div class="sub">Unidad Nacional para la Gestión<br>del Riesgo de Desastres</div>
+      </div>
+    </div>
+    <div class="cover-badge">Cartilla</div>
+    <div class="cover-title">Sistema de Gestión<br>de Calidad</div>
+    <div class="cover-iso">ISO 9001 : 2015</div>
+    <div style="font-family:'Nunito',sans-serif; font-size:15px; color:#555; margin-top:10px; margin-bottom:20px;">
+      Guía para el equipo del <strong style="color:var(--azul-oscuro);">Grupo de Cooperación Internacional – GCI</strong>
+    </div>
+    <div class="cover-stars">★ ★ ★</div>
+    <div style="margin-top:18px;">
+      <span style="background:var(--azul-oscuro);color:white;font-size:13px;padding:6px 18px;border-radius:20px;font-family:'Nunito',sans-serif;font-weight:700;">
+        SIPLAG · UNGRD · 2026
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ¿QUÉ ES? ============ -->
+<div class="page-head">
+  <div class="icon-big">📋</div>
+  <div>
+    <h2>¿Qué es la ISO 9001?</h2>
+    <p>Sistema de Gestión de Calidad — parte del SIPLAG</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="notebook-card amarillo">
+    <div class="section-title"><span class="emoji">🎯</span> Objetivo del Sistema de Gestión de Calidad</div>
+    <div class="obj-box">
+      <p>Satisfacer las necesidades y expectativas de los usuarios y beneficiarios de la UNGRD a través de la prestación de servicios y entrega de productos a cargo de la Entidad.</p>
+    </div>
+
+    <div class="section-title" style="font-size:22px; margin-bottom:14px;"><span class="emoji">👥</span> ¿A quiénes servimos?</div>
+    <div class="users-list">
+      <div class="user-chip">Entes territoriales</div>
+      <div class="user-chip">Entidades públicas y privadas</div>
+      <div class="user-chip am">Comunidades</div>
+      <div class="user-chip">Ciudadanía en general</div>
+      <div class="user-chip am">SNGRD</div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:20px;">
+      💡 La ISO 9001 no solo verifica qué hace el área — evalúa <em>cómo organiza, controla, documenta y evidencia técnicamente su gestión</em>.
+    </div>
+  </div>
+
+  <!-- GCI Enfoque auditoría -->
+  <div class="notebook-card">
+    <div class="section-title"><span class="emoji">🔍</span> ¿En qué se enfoca la auditoría?</div>
+    <p style="font-size:15px; color:#444; line-height:1.7; margin-bottom:18px;">
+      Durante la auditoría, el <strong>Grupo de Cooperación Internacional</strong> debe orientarse a evidenciar una gestión <em>estructurada</em>, soportada en:
+    </p>
+    <div class="grid-3">
+      <div class="mini-card am">
+        <h4>Planeación</h4>
+        <p>Herramientas concretas: Plan de Acción con metas, actividades, entregables y presupuesto.</p>
+      </div>
+      <div class="mini-card">
+        <h4>Seguimiento</h4>
+        <p>Informes bimestrales que muestran avance y control de resultados.</p>
+      </div>
+      <div class="mini-card ve">
+        <h4>Medición</h4>
+        <p>Indicadores con fórmula, meta y análisis periódico.</p>
+      </div>
+      <div class="mini-card na">
+        <h4>Documental</h4>
+        <p>Procedimientos vigentes con versiones y responsables identificados.</p>
+      </div>
+      <div class="mini-card am">
+        <h4>Riesgos</h4>
+        <p>Matriz que reconoce puntos críticos y define controles.</p>
+      </div>
+      <div class="mini-card">
+        <h4>Productos técnicos</h4>
+        <p>Insumos, actas, convenios, informes con trazabilidad institucional.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box azul">
+      📌 Mensaje central: El GCI cuenta con procedimientos actualizados, plan de acción, indicadores, informes bimestrales, matriz de riesgos y control documental que permiten evidenciar la trazabilidad de la cooperación internacional.
+    </div>
+  </div>
+</div>
+
+<!-- ============ PLAN DE ACCIÓN ============ -->
+<div class="page-head" style="background:var(--azul-medio);">
+  <div class="icon-big">📅</div>
+  <div>
+    <h2>Plan de Acción GCI 2026</h2>
+    <p>Estructura de trabajo y evidencias de gestión</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="notebook-card">
+    <div class="section-title"><span class="emoji">📌</span> Las cinco líneas de trabajo</div>
+    <p style="font-size:14.5px; color:#555; line-height:1.6; margin-bottom:22px;">
+      El Plan de Acción organiza el trabajo del GCI mediante actividades verificables con metas, indicadores y fechas de cumplimiento. Demuestra que el proceso opera de forma <strong>proactiva</strong>, no reactiva.
+    </p>
+
+    <div class="activity-row">
+      <div class="act-num">1</div>
+      <div class="act-content">
+        <h4>Seguimiento PECI</h4>
+        <p>Documentos de seguimiento al Plan Estratégico de Cooperación Internacional, articulado con APC-Colombia y Cancillería.</p>
+        <span class="act-badge">Meta: 1 documento — 4° bimestre</span>
+      </div>
+    </div>
+    <div class="activity-row">
+      <div class="act-num">2</div>
+      <div class="act-content">
+        <h4>Insumos técnicos bilaterales</h4>
+        <p>Convenios, conceptos, planes de trabajo, actas e informes de cooperación bilateral, sector privado y Sur-Sur.</p>
+        <span class="act-badge">Meta: 6 documentos bimestrales</span>
+      </div>
+    </div>
+    <div class="activity-row">
+      <div class="act-num">3</div>
+      <div class="act-content">
+        <h4>Instancias multilaterales</h4>
+        <p>Incidencia en escenarios multilaterales de GRD, cambio climático y derechos humanos.</p>
+        <span class="act-badge">Meta: 6 documentos bimestrales</span>
+      </div>
+    </div>
+    <div class="activity-row">
+      <div class="act-num">4</div>
+      <div class="act-content">
+        <h4>Diálogo regional</h4>
+        <p>Participación en mecanismos regionales: CAN, CAPRADE, OTCA, Consenso de Brasilia y otros espacios de integración.</p>
+        <span class="act-badge">Meta: 2 documentos</span>
+      </div>
+    </div>
+    <div class="activity-row">
+      <div class="act-num">5</div>
+      <div class="act-content">
+        <h4>Línea humanitaria</h4>
+        <p>Acciones humanitarias, respuesta a emergencias, IDRL, USAR, OCHA, PMA, BID y otros actores.</p>
+        <span class="act-badge">Meta: 6 documentos bimestrales</span>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:24px;">
+      ⚠️ Punto clave: Los soportes deben identificar claramente <strong>qué se realizó · quién participó · cuándo · cuáles fueron los resultados · qué compromisos continúan</strong>.
+    </div>
+  </div>
+
+  <!-- Bloques de soporte -->
+  <div class="notebook-card amarillo">
+    <div class="section-title"><span class="emoji">🧱</span> Cinco bloques de soporte del GCI</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Bloque</th>
+          <th>¿Qué contiene?</th>
+          <th>¿Para qué sirve?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Planeación</strong></td>
+          <td>Plan de Acción GCI 2026: actividades, metas, entregables, presupuesto y riesgos</td>
+          <td>Muestra que el proceso trabaja mediante metas y productos, no de forma reactiva</td>
+        </tr>
+        <tr>
+          <td><strong>Seguimiento</strong></td>
+          <td>Informe bimestral consolidado, informes técnicos por eje, reportes de avances</td>
+          <td>Demuestra que las actividades se controlan y reportan con resultados</td>
+        </tr>
+        <tr>
+          <td><strong>Medición</strong></td>
+          <td>Indicador 01 — Avance Plan de Acción: meta, fórmula, periodo, responsable y análisis</td>
+          <td>Explica cómo se mide el cumplimiento del plan</td>
+        </tr>
+        <tr>
+          <td><strong>Control documental</strong></td>
+          <td>Tabla de seguimiento y procedimientos del GCI con versiones, estados y responsables</td>
+          <td>Demuestra que existen procedimientos actualizados y con trazabilidad</td>
+        </tr>
+        <tr>
+          <td><strong>Riesgos</strong></td>
+          <td>Matriz de riesgos formulada del GCI</td>
+          <td>Permite explicar los riesgos principales del proceso y sus controles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ INDICADOR ============ -->
+<div class="page-head" style="background: #2E7D32;">
+  <div class="icon-big">📊</div>
+  <div>
+    <h2>Indicador de Calidad GCI</h2>
+    <p>Cómo se mide el cumplimiento del proceso</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="notebook-card verde">
+    <div class="section-title"><span class="emoji">📈</span> Indicador 01 — Avance Plan de Acción</div>
+
+    <div class="indicator-grid">
+      <div class="ind-label">Nombre</div>
+      <div class="ind-value"><strong>01 Avance Plan de Acción Cooperación Internacional</strong></div>
+      <div class="ind-label">Proceso</div>
+      <div class="ind-value">Cooperación Internacional</div>
+      <div class="ind-label">Tipo</div>
+      <div class="ind-value">Eficacia</div>
+      <div class="ind-label">Perspectiva</div>
+      <div class="ind-value">Procesos internos</div>
+      <div class="ind-label">Periodo</div>
+      <div class="ind-value">Bimestral</div>
+      <div class="ind-label">Unidad de medida</div>
+      <div class="ind-value">Porcentaje (%)</div>
+      <div class="ind-label">Valores</div>
+      <div class="ind-value"><span class="tag">Meta: 90%</span> <span class="tag">Medio: 80%</span> <span class="tag">Alerta: 70%</span></div>
+      <div class="ind-label">Fórmula</div>
+      <div class="ind-value">Promedio del porcentaje de cumplimiento de metas bimestrales del Plan de Acción</div>
+      <div class="ind-label">Resultado 2026</div>
+      <div class="ind-value"><strong style="color:#1B5E20;">100% en febrero · 100% en abril ✅</strong></div>
+    </div>
+
+    <div class="highlight-box verde">
+      📌 El indicador está directamente relacionado con los informes bimestrales. El cumplimiento reportado se soporta en documentos técnicos, productos y evidencias que consolidan el avance de cada período.
+    </div>
+
+    <div class="section-title" style="font-size:20px; margin-top:28px; margin-bottom:14px;"><span class="emoji">📄</span> Informes bimestrales — ¿qué evidencian?</div>
+
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>Gestión institucional</h4>
+        <p>Articulación con entidades nacionales, cooperantes y organismos internacionales.</p>
+      </div>
+      <div class="mini-card ve">
+        <h4>Gestión de recursos</h4>
+        <p>Seguimiento a iniciativas, convenios, donaciones y cooperación técnica.</p>
+      </div>
+      <div class="mini-card am">
+        <h4>Gestión humanitaria</h4>
+        <p>Coordinación de apoyos, seguimiento a emergencias y articulación humanitaria.</p>
+      </div>
+      <div class="mini-card na">
+        <h4>Seguimiento y control</h4>
+        <p>Avances, compromisos pendientes, próximos pasos y continuidad operativa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DOCUMENTOS ============ -->
+<div class="page-head" style="background: #5C3317;">
+  <div class="icon-big">📁</div>
+  <div>
+    <h2>Procedimientos y Control Documental</h2>
+    <p>Estado actual del proceso de fortalecimiento del GCI</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="notebook-card naranja">
+    <div class="section-title"><span class="emoji">🗂️</span> Procedimientos del GCI</div>
+    <p style="font-size:14.5px; color:#444; line-height:1.6; margin-bottom:20px;">
+      El GCI cuenta con todos sus procedimientos <strong>actualizados y publicados</strong>, lo que garantiza trazabilidad, estandarización y soporte técnico a cada línea de trabajo del proceso.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código / Procedimiento</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PR-1602-CI-11 · Donaciones internacionales en especie fuera de emergencia</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>PR-1602-CI-09 · Donaciones en especie en emergencia</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>PR-1602-CI-10 · Donaciones en efectivo</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>PR-1602-CI-03 · Gestión de recursos por convenios</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>PR-1602-CI-08 · CUC</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>PR-1602-CI-07 · Asistencia humanitaria al exterior</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+        <tr>
+          <td>Intercambio de experiencias oferta/demanda</td>
+          <td><span class="tag" style="background:#E8F5E9;color:#1B5E20;">✅ Publicado</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box verde">
+      ✅ Todos los procedimientos del GCI se encuentran actualizados y publicados en NeoGestión, listos para ser consultados y evidenciados durante la auditoría.
+    </div>
+  </div>
+</div>
+
+<!-- ============ RIESGOS ============ -->
+<div class="page-head" style="background: #7B1FA2;">
+  <div class="icon-big">⚠️</div>
+  <div>
+    <h2>Riesgos del Proceso GCI</h2>
+    <p>Reconocerlos y explicar sus controles es señal de madurez</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="notebook-card">
+    <div class="section-title"><span class="emoji">🛡️</span> Matriz de riesgos — GCI</div>
+    <p style="font-size:14.5px; color:#444; line-height:1.6; margin-bottom:22px;">
+      La matriz identifica tres riesgos principales. Conocerlos demuestra que el GCI <strong>reconoce sus puntos críticos</strong> y cuenta con controles activos.
+    </p>
+
+    <div class="risk-card alto">
+      <div>
+        <span class="risk-nivel">Alto</span>
+      </div>
+      <div>
+        <h4>Pérdida de credibilidad ante cooperantes por incumplimiento de compromisos</h4>
+        <p>Puede ocurrir si se asumen compromisos sin priorización, sin alineación con instrumentos institucionales o con relacionamiento inoportuno.</p>
+        <p class="risk-control">🔧 Control: Articulación con PECI, PND, Ley 1523, Cancillería/APC y reuniones para definir prioridades.</p>
+      </div>
+    </div>
+
+    <div class="risk-card medio">
+      <div>
+        <span class="risk-nivel">Moderado</span>
+      </div>
+      <div>
+        <h4>Complicaciones normativas y retrasos en donaciones internacionales</h4>
+        <p>Puede afectar a la entidad si no se conocen los requisitos normativos, rutas de ingreso/egreso, legalización o articulación con áreas administrativas.</p>
+        <p class="risk-control">🔧 Control: Aplicación de procedimientos de donaciones y reuniones con GAA, SMD, Contractual y GCI.</p>
+      </div>
+    </div>
+
+    <div class="risk-card bajo">
+      <div>
+        <span class="risk-nivel">Bajo</span>
+      </div>
+      <div>
+        <h4>Pérdida de trazabilidad documental y afectación reputacional</h4>
+        <p>Puede presentarse si la información de cooperación no se registra, archiva o controla adecuadamente, especialmente por desarticulación con áreas misionales.</p>
+        <p class="risk-control">🔧 Control: Gestión documental del GCI, revisión mensual, carpeta compartida y ayudas de memoria.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:10px;">
+      💡 Los procedimientos nuevos, los informes bimestrales, la carpeta compartida, las ayudas de memoria, las actas y la tabla documental son evidencias directamente conectadas con la gestión de estos riesgos.
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="cierre-box">
+    <h3>🏆 Conclusión estratégica</h3>
+    <p>
+      El GCI tiene una base sólida para hablar de calidad porque cuenta con plan de acción, indicador, informes bimestrales, procedimientos, matriz de riesgos y seguimiento documental.<br><br>
+      La clave no es mostrar muchos archivos, sino <strong>explicar cómo se conectan</strong>: el plan define lo que se debe hacer · el indicador mide el avance · los informes evidencian los productos · los procedimientos ordenan la operación · la matriz de riesgos muestra los puntos críticos y controles.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <strong>UNGRD · Sistema Integrado de Planeación y Gestión (SIPLAG)</strong><br>
+  Sistema de Gestión de Calidad · ISO 9001:2015 · Grupo de Cooperación Internacional · 2026<br>
+  Resolución 445 de 2018
+</footer>
+
+</body>
+</html>
